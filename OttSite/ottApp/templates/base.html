@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html class="no-js" lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel='stylesheet' href="{% static 'css/foundation.min.css' %}">
+    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+    <link rel='stylesheet' href="{% static 'css/customStyle.css' %}">
+</head>
+
+<body>
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li><a href="/" target="_self">Home</a></li>
+            <li><a href="/" target="_self">Our Otters <span>Cute lil' guys!</span></a></li>
+            <li><a href="/" target="_self">Chat</a></li>
+            <li><a href="/" target="_blank">Game</a></li>
+            <li><a href="/" target="_self">Login</a></li>
+            <li><a href="/" target="_self">About us</a></li>
+            <!--!Remove Later-->
+            <li><a href="/FoundationEx" target="_self">Example Page<span>Remove later</span></a></li>
+        </ul>
+    </div>
+
+    {% block content %}{% endblock %}
+    <script src="{% static 'js/vendor/jquery.js' %}"></script>
+    <script src="{%static 'js/vendor/what-input.js'%}"></script>
+    <script src="{%static 'js/vendor/foundation.js'%}"></script>
+    <script src="{%static 'js/app.js' %}"></script>
+    {% block scripts %}{% endblock %}
+
+
+</body>
+
+</html>
