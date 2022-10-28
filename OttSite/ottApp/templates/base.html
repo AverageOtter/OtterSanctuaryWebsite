@@ -13,7 +13,16 @@
 </head>
 
 <body>
-    <div class="header"></div>
+    <div class="header">
+        <h3 align="right" style="padding-right: 20px; padding-top: 5px;">
+            {% if request.user.is_authenticated %}
+            <p>{{ request.user.username }}</p>
+            {% else %}
+            <!--TODO: Change to register button-->
+            <a href="/register" class=“secondary button”>Register</a>
+            {% endif %}
+        </h3>
+    </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
     <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="spinner diagonal part-1"></div>
@@ -22,12 +31,18 @@
     </label>
     <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
+            <!-- TODO: Update page urls -->
             <li><a href="/" target="_self">Home</a></li>
-            <li><a href="/" target="_self">Our Otters <span>Cute lil' guys!</span></a></li>
-            <li><a href="/" target="_self">Chat</a></li>
-            <li><a href="/" target="_blank">Game</a></li>
-            <li><a href="/" target="_self">Login</a></li>
-            <li><a href="/" target="_self">About us</a></li>
+            <li><a href="/otterDB" target="_self">Our Otters <span>Cute lil' guys!</span></a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="/chat" target="_self">Chat</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/login" target="_self">Login</a></li>
+            {%endif%}
+            <li><a href="/game" target="_blank">Game</a></li>
+            <li><a href="/aboutus" target="_self">About us</a></li>
+
             <!--!Remove Later-->
             <li><a href="/FoundationEx" target="_self">Example Page<span>Remove later</span></a></li>
         </ul>

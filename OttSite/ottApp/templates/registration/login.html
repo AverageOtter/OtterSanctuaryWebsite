@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="grid-container main">
+    <div class="grid-x grid-padding-x">
+        <div class="medium-4 small-12 medium-offset-4 cell">
+            <h1>Login</h1>
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Login" class="button">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
