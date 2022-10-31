@@ -16,7 +16,7 @@
     <div class="header">
         <h3 align="right" style="padding-right: 20px; padding-top: 5px;">
             {% if request.user.is_authenticated %}
-            <p>{{ request.user.username }}</p>
+            <p>Welcome : {{ request.user.username }}</p>
             {% else %}
             <!--TODO: Change to register button-->
             <a href="/register" class=“secondary button”>Register</a>
@@ -34,7 +34,11 @@
             <!-- TODO: Update page urls -->
             <li><a href="/" target="_self">Home</a></li>
             <li><a href="/otterDB" target="_self">Our Otters <span>Cute lil' guys!</span></a></li>
-            {% if request.user.is_authenticated %}
+            {% if request.user.is_authenticated and request.user.is_staff%}
+            <li><a href="/chat" target="_self">Chat</a></li>
+            <li><a href="/admin" target="_self">Admin</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% elif request.user.is_authenticated %}
             <li><a href="/chat" target="_self">Chat</a></li>
             <li><a href="/logout">Logout</a></li>
             {% else %}

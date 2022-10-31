@@ -8,7 +8,9 @@
             <form action="/login/" method="post">
                 {% csrf_token %}
                 {{ form }}
+                <!--TODO: Fix the form errors always showing.  -->
                 <input type="submit" value="Login" class="button">
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
             </form>
         </div>
     </div>

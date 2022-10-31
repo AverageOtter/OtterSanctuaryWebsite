@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from . import models, forms
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -62,17 +63,16 @@ def game(request):
 
 def register(request):
     if request.method == "POST":
-        form = forms.CustomUserCreationForm()
+        form = forms.RegistrationForm(request.POST)
         if form.is_valid():
             form.save(request)
-            # messages.success(request, 'Account created successfully')
             return redirect("/login/")
 
     else:
-        form = forms.CustomUserCreationForm()
-        context = {"form": form}
-        return render(request, "registration/register.html", context=context)
-    
+        form = forms.RegistrationForm(request.POST)
+    context = {"form": form}
+    return render(request, "registration/register.html", context=context)
+
 
 def logout_user(request):
     logout(request)
