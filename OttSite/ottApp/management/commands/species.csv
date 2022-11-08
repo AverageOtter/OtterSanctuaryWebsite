@@ -1,0 +1,14 @@
+Name,Name2,weightmin,weightmax,origin,land
+Asian Small-clawed Otter,Aonyx cinereus,2,5,South-East Asia,True
+Smooth-coated Otter,Lutrogale perspicillata,7,10,South-East Asia,True
+Hairy-nosed Otter,Lutra sumatrana,5,8,South-East Asia,True
+Spotted-necked Otter,Hydrictis maculicollis,4,7,Africa,True
+African Clawless Otter,Aonyx capensis,12,19,Africa,True
+Congo Clawless Otter,Aonyx congicus,12,17,Africa,True
+Eurasian Otter,Lutra lutra,4,11,Europe Asia,True
+North American River Otter,Lontra canadensis,8,11,North America,True
+Sea Otter,Enhydra lutris,23,36,International,False
+Giant Otter,Pteronura brasiliensis,24,34,South America,True
+Marine Otter,Lontra felina,3,6,South America,True
+Southern River Otter,Lontra provocax,5,10,South America,True
+Neotropical Otter,Lontra longicaudis,10,14,South America,True

@@ -3,15 +3,20 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from . import models, forms
-from django.contrib import messages
+
+# from django.contrib import messages
+
+import logging
 
 # Create your views here.
 def index(request):
     current_user = request.user
+
     context = {
         "title": "Otter Region",
         "current_user": current_user,
     }
+
     return render(request, "index.html", context=context)
 
 
@@ -26,9 +31,12 @@ def aboutUs(request):
 
 def otterDB(request):
     current_user = request.user
+    onsitelist = models.onsite.objects.all()
+    
     context = {
         "title": "Otter Den",
         "current_user": current_user,
+        "onsitelist": onsitelist,
     }
     return render(request, "otterDB.html", context=context)
 

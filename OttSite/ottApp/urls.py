@@ -15,5 +15,3 @@ urlpatterns = [
     path("logout/", views.logout_user),
 ]
 
-#! If going going anywhere but homepage to site, it adds onto the current url and doesnt connect.
-#! like .../chat/login/ which isnt valid.

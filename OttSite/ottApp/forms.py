@@ -15,13 +15,14 @@ class RegistrationForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
     def save(self, commit=True):
-        user = super().save(commit=False)
+        user = super(RegistrationForm).save(commit=False)
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user
 
 
+#! Not used in any format
 # class CustomUserCreationForm(UserCreationForm):
 #     username = forms.CharField(label="username", min_length=5, max_length=150)
 #     email = forms.EmailField(label="email")
