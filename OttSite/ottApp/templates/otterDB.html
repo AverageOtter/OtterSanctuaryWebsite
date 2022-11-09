@@ -1,8 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-{{ title }}
-{% endblock %}
+{% load mytags %}
+{% block title %}{{ title }}{% endblock %}
 {% block content %}
-
-{%endblock%}
+    <div class="grid-container main">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-10 small-12 medium-offset-1 cell">
+                <h1>Otter Den!</h1>
+                <form action="/otterDB/" method="post">
+                    {% csrf_token %}
+                    {{ form.as_div }}
+                    <input type="submit" value="This One!" class="button" name="otterchoice">
+                </form>
+                {% if onsitelist %}
+                    {% if otter in onsitelist %}
+                        <div>
+                            <!-- Display  Otter Info -->
+                            <h3>{{ otter.name }}</h3>
+                            <p>
+                                {{ otter.name }} is a
+                                {% if otter.sex == "M" %}
+                                    male
+                                {% else %}
+                                    female
+                                {% endif %}
+                                , {{ otter.species }}.
+                            </p>
+                            <p>
+                                They are a
+                                {% if otter.weight > species.healthyweightmin and otter.weight < species.healthyweightmax %}
+                                    healthy otter at about {{ otter.weight }} kg
+                                {% else %}
+                                    {% if otter.weight > species.healthyweightmax %}
+                                        heavy otter at about {{ otter.weight }} kg (<strong>{{ otter.weight|subtract:species.healthyweightmax }} kg above the healthy limit</strong>)
+                                    {% else %}
+                                        light otter at about {{ otter.weight }} kg (<strong>{{ species.healthyweightmin|subtract:otter.weight }} kg below the healthy limit</strong>)
+                                    {% endif %}
+                                {% endif %}
+                                at {{ otter.age }} years old.
+                            </p>
+                            <p>They love to play and eat their favorite snack : {{ otter.snack }}</p>
+                            <p>
+                                Their times of feeding is (UTC):
+                                <ul>
+                                    <li>{{ otter.breakfast }}</li>
+                                    <li>{{ otter.lunch }}</li>
+                                    <li>{{ otter.dinner }}</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div>
+                            <!-- Display Otter Species Info -->
+                            <h3>Information on the {{ species }}!</h3>
+                            <p>
+                                The {{ species }} ({{ species.scientificname }}) is a primariliy
+                                {% if species.land %}
+                                    land-based
+                                {% else %}
+                                    water-based
+                                {% endif %}
+                                mustilid.
+                            </p>
+                            <p>
+                                They originate from {{ species.origin }} and usually weight between
+                                {{ species.healthyweightmin }} kg and {{ species.healthyweightmax }} kg.
+                            </p>
+                            <!--TODO: Add a picture of each species... Maybe : <a href={static {species}.jpg}></a> -->
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div>
+                        <h3>Our Database is Down; We're Sorry!</h3>
+                    </div>
+                {% endif %}
+                <!-- Display Otter Species Info -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

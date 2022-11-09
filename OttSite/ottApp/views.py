@@ -32,12 +32,31 @@ def aboutUs(request):
 def otterDB(request):
     current_user = request.user
     onsitelist = models.onsite.objects.all()
-    
-    context = {
-        "title": "Otter Den",
-        "current_user": current_user,
-        "onsitelist": onsitelist,
-    }
+    if request.method == "POST":
+        # returns a bound form
+        form = forms.OtterSelection(request.POST)
+        # returns a value of the pk
+        pkdata = request.POST.get("ottname")
+        # Searches for the pk
+        otterwanted = onsitelist.get(pk=pkdata)
+        # Accesses the otters species, returns the species class type
+        species = otterwanted.species
+        context = {
+            "title": "Otter Den",
+            "current_user": current_user,
+            "onsitelist": onsitelist,
+            "form": form,
+            "otter": otterwanted,
+            "species": species,
+        }
+    else:
+        form = forms.OtterSelection()
+        context = {
+            "title": "Otter Den",
+            "current_user": current_user,
+            "onsitelist": onsitelist,
+            "form": form,
+        }
     return render(request, "otterDB.html", context=context)
 
 
