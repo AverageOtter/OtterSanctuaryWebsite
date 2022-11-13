@@ -7,8 +7,12 @@
             <div class="large-12 medium-12, small-12 cell">
                 <h1>Lobby</h1>
                 <hr/>
+                <small>Most recent messages appear at the top</small>
+                <small>The format is Military time "HHMM.SS User : Message"</small>
                 <form id="webform">
                     <input type="text" name="message"/>
+                    <input type="hidden" name="userid" value="{{ current_user }}"/>
+                    <input type="hidden" name="time" value="CurrentTime"/>
                 </form>
                 <div id="messages"></div>
             </div>
@@ -25,9 +29,12 @@
             console.log('DATA: ', data)
             if (data.type === 'chat') {
                 let messages = document.getElementById('messages')
-                messages.insertAdjacentHTML('afterbegin', `<div>
-                                        <p>${data.message}</p>
-                                    </div>`)
+                messages.insertAdjacentHTML('afterbegin',
+                    `
+                    <div>
+                        <p>${data.timenowH}${data.timenowM}.${data.timenowS} ${data.user}: ${data.message}</p>
+                    </div>
+                    `)
             }
         }
 
@@ -35,8 +42,18 @@
         form.addEventListener('submit', (e) => {
             e.preventDefault()
             let message = e.target.message.value
+            let user = e.target.userid.value
+            let d = new Date()
+            let timenowH = (d.getHours() < 10) ? '0' + d.getHours() : d.getHours()
+            let timenowM = (d.getMinutes() < 10) ? '0' + d.getMinutes() : d.getMinutes()
+            let timenowS = (d.getSeconds() < 10) ? '0' + d.getSeconds() : d.getSeconds()
+
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'user': user,
+                'timenowH': timenowH,
+                'timenowM': timenowM,
+                'timenowS': timenowS
             }))
             form.reset()
         })
