@@ -60,7 +60,7 @@ def otterDB(request):
     return render(request, "otterDB.html", context=context)
 
 
-@login_required
+#@login_required
 def chat(request):
     current_user = request.user
     context = {
@@ -68,6 +68,8 @@ def chat(request):
         "current_user": current_user,
     }
     return render(request, "chat.html", context=context)
+
+
 
 
 def chatEmp(request):

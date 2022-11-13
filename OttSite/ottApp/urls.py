@@ -14,4 +14,3 @@ urlpatterns = [
     path("game", views.game, name="game"),  #!Remove
     path("logout/", views.logout_user),
 ]
-
