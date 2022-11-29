@@ -10,7 +10,5 @@ urlpatterns = [
     path("chat/", views.chat, name="chat"),
     path("login/", auth_views.LoginView.as_view()),
     path("register/", views.register),
-    path("FoundationEx/", views.ex, name="FoundationEx"),
-    path("game", views.game, name="game"),  #!Remove
     path("logout/", views.logout_user),
 ]

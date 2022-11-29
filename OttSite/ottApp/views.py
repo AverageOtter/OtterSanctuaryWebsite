@@ -60,7 +60,7 @@ def otterDB(request):
     return render(request, "otterDB.html", context=context)
 
 
-#@login_required
+@login_required
 def chat(request):
     current_user = request.user
     context = {
@@ -68,26 +68,6 @@ def chat(request):
         "current_user": current_user,
     }
     return render(request, "chat.html", context=context)
-
-
-
-
-def chatEmp(request):
-    current_user = request.user
-    context = {
-        "title": "Chat Elevated",
-        "current_user": current_user,
-    }
-    return render(request, "chatEmp.html", context=context)
-
-
-def game(request):
-    current_user = request.user
-    context = {
-        "title": "Game",
-        "current_user": current_user,
-    }
-    return render(request, "game.html", context=context)
 
 
 def register(request):
@@ -107,12 +87,3 @@ def logout_user(request):
     logout(request)
     return redirect("/login/")
 
-
-#! Remove after pages have been setup
-def ex(request):
-    current_user = request.user
-    context = {
-        "title": "Example",
-        "current_user": current_user,
-    }
-    return render(request, "FoundationEx.html", context=context)

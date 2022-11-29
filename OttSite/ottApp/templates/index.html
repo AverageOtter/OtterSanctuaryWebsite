@@ -2,13 +2,38 @@
 {% load static %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
+    <link rel='stylesheet' href="{% static 'css/images.css' %}">
     <div class="grid-container main">
         <div class="grid-x grid-padding-x">
             <div class="large-12 medium-12, small-12 cell">
                 <h1>Otter Paradise</h1>
                 <hr/>
             </div>
-            <div class="grid-x grid-padding-x"></div>
+            <div class="large-12 medium-12 small-12 cell">
+                <img id="ott4" src="{% static 'images/ott4.jpeg' %}">
+                <h2>
+                    Welcome to the
+                    <br>
+                    Otter Paradise Sanctuary!
+                </h2>
+                <p>
+                    Welcome to the Otter Paradise Sanctuary located in rustic Nowhere, OK! Just half of a mile off the shore of Fort Cobb Lake.
+                    A small, friendly, psuedo-family run Caddo County attraction. Perfect for any quasi-family trip in any-weather!
+                </p>
+            </div>
+            <div class="large-12 medium-12 small-12 cell" style="padding-top:4%">
+                <h2>Visitation</h2>
+                <div>
+                    <img id="ott5" src="{% static 'images/ott5.jpeg' %}">
+                    <p>
+                        We pride ourselves on our avalibility! Our family works around the clock in order to make sure your visit is perfect!
+                        We open our gates to you at 10am and close at 5pm. <strong>Closed on major holidays.</strong>
+                        <br/>
+                        We have our feeding times listed in the Otter Information page
+                        The feeding times would be an excellent time to visit.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    {% endblock %}
+{% endblock %}

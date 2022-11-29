@@ -167,4 +167,5 @@ input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
 
 h1, h2, h3, p {
     font-family: 'Varela Round', sans-serif;
+    font-size: 150%;
 }

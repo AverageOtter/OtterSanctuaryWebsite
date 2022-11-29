@@ -1,4 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}{{ title }}{% endblock %}
-{% block content %}{% endblock %}
+{% block content %}
+    <link rel='stylesheet' href="{% static 'css/images.css' %}">
+    <div class="grid-container main">
+        <div class="grid-x grid-padding-x">
+            <div class="large-12 medium-12, small-12 cell">
+                <h1>Meet the Otther Family!</h1>
+                <hr/>
+                <p style="text-align: center;">
+                    We pride outselves on the caring family that we have created!
+                    Our Professional staff really act like this is their true family, since they cannot leave!
+                    They dedicate themselves to caring for our otters, visitors and each other!
+                    All of our staff are trained to ensure our guests and otters can have an intimate while ensuring the safety of both parties or else!
+                </p>
+            </div>
+            <div class="grid-x grid-padding-x">
+                <div class="large-4 medium-4, small-4">
+                    <img class="staffpic" src="{% static 'images/staff1.jpeg' %}">
+                </div>
+                <div class="large-8 medium-8, small-8">
+                    <h3 class="stafftxt">Frank L. Herrera</h3>
+                </div>
+                <div class="large-4 medium-4, small-4">
+                    <img class="staffpic", src="{% static 'images/staff2.jpeg' %}">
+                </div>
+                <div class="large-8 medium-8, small-8">
+                    <h3 class="stafftxt">Vicki L. Lewis</h3>
+                </div>
+                <div class="large-4 medium-4, small-4">
+                    <img class="staffpic", src="{% static 'images/staff3.jpeg' %}">
+                </div>
+                <div class="large-8 medium-8, small-8">
+                    <h3 class="stafftxt">Shannon R. Hawley</h3>
+                </div>
+                <div class="large-4 medium-4, small-4">
+                    <img class="staffpic", src="{% static 'images/staff4.jpeg' %}">
+                </div>
+                <div class="large-8 medium-8, small-8">
+                    <h3 class="stafftxt">Jean I. Quigley</h3>
+                </div>
+            </div>
+            <h6>
+                <strong><small>These people do not exist to you.</small></strong>
+            </h6>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

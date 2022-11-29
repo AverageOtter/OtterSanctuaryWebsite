@@ -5,18 +5,18 @@
     <div class="grid-container main">
         <div class="grid-x grid-padding-x">
             <div class="large-12 medium-12, small-12 cell">
-                <h1>Lobby</h1>
+                <h1 style="padding-top:2%">Open Chat Lobby!</h1>
                 <hr/>
                 <small>Most recent messages appear at the top</small>
-                <small>The format is Military time "HHMM.SS User : Message"</small>
+                <small>The format is Military time "HH.MM.SS User : Message"</small>
                 <form id="webform">
                     <input type="text" name="message"/>
                     <input type="hidden" name="userid" value="{{ current_user }}"/>
                     <input type="hidden" name="time" value="CurrentTime"/>
+                    <input type="hidden" name="staff" value="{{ user.is_staff }}"/>
                 </form>
                 <div id="messages"></div>
             </div>
-            <div class="grid-x grid-padding-x"></div>
         </div>
     </div>
     <!--TODO: Move to a dedicated file -->
@@ -31,10 +31,10 @@
                 let messages = document.getElementById('messages')
                 messages.insertAdjacentHTML('afterbegin',
                     `
-                    <div>
-                        <p>${data.timenowH}${data.timenowM}.${data.timenowS} ${data.user}: ${data.message}</p>
-                    </div>
-                    `)
+                                    <div>
+                                        <p>${data.timenowH}.${data.timenowM}.${data.timenowS} <strong>${data.staffstr}</strong> ${data.user}: ${data.message}</p>
+                                    </div>
+                                    `)
             }
         }
 
@@ -47,13 +47,22 @@
             let timenowH = (d.getHours() < 10) ? '0' + d.getHours() : d.getHours()
             let timenowM = (d.getMinutes() < 10) ? '0' + d.getMinutes() : d.getMinutes()
             let timenowS = (d.getSeconds() < 10) ? '0' + d.getSeconds() : d.getSeconds()
+            let staff = e.target.staff.value //Returns bool
+            let staffstr = "thisshouldchange"
+            if (staff === "True") {
+                staffstr = "STAFF "
+            } else {
+                staffstr = ""
+            }
+            console.log(staff, staffstr)
 
             chatSocket.send(JSON.stringify({
                 'message': message,
                 'user': user,
                 'timenowH': timenowH,
                 'timenowM': timenowM,
-                'timenowS': timenowS
+                'timenowS': timenowS,
+                'staffstr': staffstr,
             }))
             form.reset()
         })

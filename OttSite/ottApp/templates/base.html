@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <h3 align="right" style="padding-right: 20px; padding-top: 5px;">
+            <h3 align="right" style="padding-right: 20px;">
                 {% if request.user.is_authenticated %}
                     <p>Welcome : {{ request.user.username }}</p>
                 {% else %}
@@ -60,14 +60,7 @@
                     </li>
                 {% endif %}
                 <li>
-                    <a href="/game" target="_blank">Game</a>
-                </li>
-                <li>
                     <a href="/aboutus" target="_self">About us</a>
-                </li>
-                <!--!Remove Later-->
-                <li>
-                    <a href="/FoundationEx" target="_self">Example Page<span>Remove later</span></a>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,39 @@
+#ott4,
+#ott5 {
+    display: inline;
+    width: 40%;
+    height: auto;
+    float: left;
+    padding: 2%;
+    border-radius: 10%;
+    border-color: aqua;
+    border-width: 2px;
+}
+
+#ott5 {
+    float: right;
+    width: 55%;
+}
+
+
+
+#imageh {
+    float: center;
+}
+
+p {
+    font-size: 150%;
+}
+
+.staffpic {
+    float: left;
+    width: 70%;
+    height: auto;
+    padding: 2%;
+    border-radius: 25%;
+}
+.stafftxt{
+    text-align: left;
+    padding-top: 15%;
+    vertical-align:middle;
+}

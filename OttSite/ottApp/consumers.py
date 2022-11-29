@@ -18,6 +18,7 @@ class ChatConsumer(WebsocketConsumer):
         timenowH = text_data_js["timenowH"]
         timenowM = text_data_js["timenowM"]
         timenowS = text_data_js["timenowS"]
+        staffstr = text_data_js["staffstr"]
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
@@ -27,6 +28,7 @@ class ChatConsumer(WebsocketConsumer):
                 "timenowH": timenowH,
                 "timenowM": timenowM,
                 "timenowS": timenowS,
+                "staffstr": staffstr,
             },
         )
 
@@ -36,6 +38,7 @@ class ChatConsumer(WebsocketConsumer):
         timenowH = event["timenowH"]
         timenowM = event["timenowM"]
         timenowS = event["timenowS"]
+        staffstr = event["staffstr"]
         self.send(
             text_data=json.dumps(
                 {
@@ -45,6 +48,7 @@ class ChatConsumer(WebsocketConsumer):
                     "timenowH": timenowH,
                     "timenowM": timenowM,
                     "timenowS": timenowS,
+                    "staffstr": staffstr,
                 }
             )
         )
